@@ -1,24 +1,15 @@
 {
-  "name": "vuepress-theme-vdoing-template",
+  "name": "taro-xin-blog",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev docs --debug",
-    "build": "vuepress build docs",
-    "docs:dev": "vuepress dev docs --debug",
-    "docs:build": "vuepress build docs"
+    "build": "vuepress build docs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/u2sb/vuepress-theme-vdoing-template.git"
-  },
-  "author": "MonoLogueChi",
+  "author": "TaroXin",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/u2sb/vuepress-theme-vdoing-template/issues"
-  },
-  "homepage": "https://github.com/u2sb/vuepress-theme-vdoing-template#readme",
+  "homepage": "https://taroxin.com/blog",
   "dependencies": {
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-attrs": "^4.1.4",
