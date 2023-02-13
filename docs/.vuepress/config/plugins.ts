@@ -52,4 +52,22 @@ export default <UserPlugins>[
     },
   ],
   ["fulltext-search"],
+  [
+    'vuepress-plugin-comment',
+    {
+      choosen: 'gitalk',
+      options: {
+        clientID: 'c64f2673ffcf2f2a2870',
+        clientSecret: '9cd36387143d3f0104fb341356ef4b07e29b827c',
+        repo: 'blog', // GitHub 仓库
+        owner: 'taroxin', // GitHub仓库所有者
+        admin: ['taroxin'], // 对仓库有写权限的人
+        distractionFreeMode: false,
+        id: "<%- (window.location.origin + (frontmatter.to.path || window.location.pathname)).slice(-50) %>", //  页面的唯一标识,长度不能超过50
+        title: "「评论」<%- document.title %>", // GitHub issue 的标题
+        labels: ["Gitalk", "Comment"], // GitHub issue 的标签
+        body:"<%- document.title %>：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>" // GitHub issue 的内容
+      }
+    }
+  ]
 ];

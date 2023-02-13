@@ -32,6 +32,7 @@ export default <VdoingThemeConfig>{
   // rightMenuBar: false, // 是否显示右侧文章大纲栏，默认true (屏宽小于1300px下无论如何都不显示)
   // sidebarOpen: false, // 初始状态是否打开左侧边栏，默认true
   // pageButton: false, // 是否显示快捷翻页按钮，默认true
+  defaultMode: 'light',
 
   sidebarOpen: true, // 初始状态是否打开侧边栏，默认true
   sidebar: { mode: "structuring", collapsable: true }, // 侧边栏  'structuring' | { mode: 'structuring', collapsable: Boolean} | 'auto' | 自定义
