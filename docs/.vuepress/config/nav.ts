@@ -5,20 +5,7 @@ import { NavItem } from "vuepress/config";
 export default <Array<NavItem>>[
   { text: "泰罗GO", link: "/" },
   {
-    text: "配置",
-    items: [
-      {
-        text: "项目配置",
-        link: "/start/",
-      },
-      {
-        text: "部署",
-        link: "/deploy/",
-      },
-      {
-        text: "更多参考",
-        link: "/more/",
-      },
-    ],
+    text: "所有文章",
+    link: "/archives/"
   },
 ];
