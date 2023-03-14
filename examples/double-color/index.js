@@ -58,10 +58,39 @@ function compressHello() {
   return resultStr
 }
 
-const firstPrize = compressHello()
+// const firstPrize = compressHello()
 // fs.writeFileSync('./hello-1.txt', firstPrize)
-fs.writeFileSync('./hello-2.txt.gz', zlib.gzipSync(firstPrize))
-fs.writeFileSync('./hello-2.txt.def', zlib.deflateSync(firstPrize))
-fs.writeFileSync('./hello-2.txt.inf', zlib.inflateSync(firstPrize))
-fs.writeFileSync('./hello-2.txt.br', zlib.brotliCompressSync(firstPrize))
 
+// const firstPrize = compressHello()
+// fs.writeFileSync('./hello-2.txt.gz', zlib.gzipSync(firstPrize))
+// fs.writeFileSync('./hello-2.txt.def', zlib.deflateSync(firstPrize))
+// fs.writeFileSync('./hello-2.txt.br', zlib.brotliCompressSync(firstPrize))
+
+
+function generateAll() {
+  const arrRed = Array.from({ length: 33 }, (_, index) => (index + 1).toString().padStart(2, '0'))
+  const arrRedResult = generateCombinations(arrRed, 6, Number.MAX_VALUE)
+
+  const result = []
+  arrRedResult.forEach(line => {
+    for (let i = 1; i <= 16; i++) {
+      result.push(line.join('') + i.toString().padStart(2, '0'))
+    }
+  })
+
+  return result
+}
+
+function compressAll() {
+  const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFG'
+  const allStr = generateAll().join('')
+  let resultStr = ''
+  for (let i = 0; i < allStr.length; i += 2) {
+    const number = allStr[i] + allStr[i+1]
+    resultStr += letters[parseInt(number) - 1]
+  }
+  return resultStr
+}
+
+const firstPrize = compressAll()
+fs.writeFileSync('./all-ball.txt', firstPrize)
