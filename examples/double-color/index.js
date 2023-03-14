@@ -1,4 +1,5 @@
 const fs = require('fs')
+const zlib = require('zlib')
 
 function generateCombinations(arr, len, maxCount) {
   let result = []
@@ -43,5 +44,24 @@ function getDoubleColorBall(count) {
   return result
 }
 
-const firstPrize = getDoubleColorBall(1000).join('')
-fs.writeFileSync('./hello.txt', firstPrize)
+// const firstPrize = getDoubleColorBall(1000).join('')
+// fs.writeFileSync('./hello.txt', firstPrize)
+
+function compressHello() {
+  const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFG'
+  const doubleColorBallStr = getDoubleColorBall(1000).join('')
+  let resultStr = ''
+  for (let i = 0; i < doubleColorBallStr.length; i+=2) {
+    const number = doubleColorBallStr[i] + doubleColorBallStr[i+1]
+    resultStr += letters[parseInt(number) - 1]
+  }
+  return resultStr
+}
+
+const firstPrize = compressHello()
+// fs.writeFileSync('./hello-1.txt', firstPrize)
+fs.writeFileSync('./hello-2.txt.gz', zlib.gzipSync(firstPrize))
+fs.writeFileSync('./hello-2.txt.def', zlib.deflateSync(firstPrize))
+fs.writeFileSync('./hello-2.txt.inf', zlib.inflateSync(firstPrize))
+fs.writeFileSync('./hello-2.txt.br', zlib.brotliCompressSync(firstPrize))
+
