@@ -93,4 +93,7 @@ function compressAll() {
 }
 
 const firstPrize = compressAll()
-fs.writeFileSync('./all-ball.txt', firstPrize)
+fs.writeFileSync('./all-ball.txt.gz', zlib.gzipSync(firstPrize))
+fs.writeFileSync('./all-ball.txt.br', zlib.brotliCompressSync(firstPrize))
+
+// fs.writeFileSync('./all-ball.txt', firstPrize)
