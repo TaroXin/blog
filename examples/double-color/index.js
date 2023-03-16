@@ -92,8 +92,24 @@ function compressAll() {
   return resultStr
 }
 
-const firstPrize = compressAll()
-fs.writeFileSync('./all-ball.txt.gz', zlib.gzipSync(firstPrize))
-fs.writeFileSync('./all-ball.txt.br', zlib.brotliCompressSync(firstPrize))
+// const firstPrize = compressAll()
+// fs.writeFileSync('./all-ball.txt.gz', zlib.gzipSync(firstPrize))
+// fs.writeFileSync('./all-ball.txt.br', zlib.brotliCompressSync(firstPrize))
 
 // fs.writeFileSync('./all-ball.txt', firstPrize)
+
+
+// 执行解压操作
+const brFile = fs.readFileSync('./hello-2.txt.br')
+const gzipFile = fs.readFileSync('./hello-2.txt.gz')
+const deflateFile = fs.readFileSync('./hello-2.txt.def')
+
+const brFileStr = zlib.brotliDecompressSync(brFile).toString()
+const gzipFileStr = zlib.gunzipSync(gzipFile).toString()
+const deflateFileStr = zlib.inflateSync(deflateFile).toString()
+
+console.log(brFileStr)
+console.log(gzipFileStr)
+console.log(deflateFileStr)
+
+console.log(brFileStr === gzipFileStr, brFileStr === deflateFileStr) // true, true
