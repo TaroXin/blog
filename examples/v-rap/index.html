@@ -1,0 +1,51 @@
+<div contenteditable id="input"></div>
+
+<style>
+  .jumping-letter {
+    display: inline-block;
+    animation: jumping 0.5s ease-in-out infinite 0.5s;
+  }
+
+  @keyframes jumping {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  const el = document.getElementById('input')
+
+  let str = ''
+  el.addEventListener('input', e=> {
+    el.innerHTML = ''
+    if (e.data) {
+      str += e.data
+    } else {
+      console.log('删除')
+      str = str.slice(0, str.length - 1)
+    }
+
+    const children = []
+    for (let i = 0; i < str.length; i++) {
+      const span = document.createElement('span')
+      span.textContent = str[i]
+      span.classList.add('jumping-letter')
+      children.push(span)
+      el.appendChild(span)
+    }
+
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  })
+</script>
