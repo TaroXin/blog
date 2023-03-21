@@ -1,6 +1,7 @@
 const fs = require('fs')
 const zlib = require('zlib')
 
+console.time('start')
 function generateCombinations(arr, len, maxCount) {
   let result = []
 
@@ -147,18 +148,115 @@ function decodeData(brFile) {
   return result
 }
 
-const firstSend = fs.readFileSync('./first-send.txt.br')
-const firstDataList = decodeData(firstSend)
-console.log(firstDataList.length) // 500000
+// const firstSend = fs.readFileSync('./first-send.txt.br')
+// const firstDataList = decodeData(firstSend)
+// console.log(firstDataList.length) // 500000
 
-function random(count) {
-  let result = []
-  for (let i = 0; i < count; i++) {
-    const index = Math.floor(Math.random() * firstDataList.length)
-    console.log(firstDataList[index])
-    result.push(letterToCode(firstDataList[index]))
+// function random(count) {
+//   let result = []
+//   for (let i = 0; i < count; i++) {
+//     const index = Math.floor(Math.random() * firstDataList.length)
+//     console.log(firstDataList[index])
+//     result.push(letterToCode(firstDataList[index]))
+//   }
+//   return result
+// }
+//
+// console.log(random(2))
+
+
+function getRandomCode(count = 500000) {
+  const arrRed = Array.from({ length: 33 }, (_, index) => (index + 1).toString().padStart(2, '0'))
+  // generateCombinations 是我们上面定义过的函数
+  const arrRedResult = generateCombinations(arrRed, 6, count)
+
+  const result = []
+  let blue = 1
+  arrRedResult.forEach(line => {
+    result.push([...line, (blue++).toString().padStart(2, '0')])
+    if (blue > 16) {
+      blue = 1
+    }
+  })
+
+  return result
+}
+
+function randomPurchase() {
+  const codes = getRandomCode(5000)
+  const result = []
+  for (let code of codes) {
+    let count = Math.floor(Math.random() * 50) + 1
+    result.push({
+      code,
+      count,
+    })
   }
   return result
 }
 
-console.log(random(2))
+/**
+ * @param {String[]} target ['01', '02', '03', '04', '05', '06', '07']
+ * @param {String[]} origin ['01', '02', '03', '04', '05', '06', '07']
+ * @returns {Number} 返回当前彩票的中奖金额
+ */
+function compareToMoney(target, origin) {
+  let money = 0
+  let rightMatched = target[6] === origin[6]
+  // 求左边六位的交集数量
+  let leftMatchCount = target.slice(0, 6).filter(
+    c => origin.slice(0,6).includes(c)
+  ).length
+
+  if (leftMatchCount === 6 && rightMatched) {
+    money += 5000000
+  } else if (leftMatchCount === 6 && !rightMatched) {
+    money += 300000
+  } else if (leftMatchCount === 5 && rightMatched) {
+    money += 3000
+  } else if (leftMatchCount === 5 && !rightMatched) {
+    money += 200
+  } else if (leftMatchCount === 4 && rightMatched) {
+    money += 200
+  } else if (leftMatchCount === 4 && !rightMatched) {
+    money += 10
+  } else if (leftMatchCount === 3 && rightMatched) {
+    money += 10
+  } else if (leftMatchCount === 2 && rightMatched) {
+    money += 5
+  } else if (leftMatchCount === 1 && rightMatched) {
+    money += 5
+  } else if (rightMatched) {
+    money += 5
+  }
+  return money
+}
+
+// 空号在前，购买数量越多越靠后
+const purchaseList = randomPurchase().sort((a, b) => a.count - b.count)
+const bonusPool = []
+
+for (let i = 0; i < purchaseList.length; i++) {
+  // 假设这就是一等奖，那么就需要计算其价值
+  const firstPrize = purchaseList[0]
+  let totalMoney = 0
+
+  for (let j = 0; j < purchaseList.length; j++) {
+    // 与一等奖进行对比，对比规则是参照彩票中奖规则
+    const money = compareToMoney(purchaseList[j].code, firstPrize.code) * purchaseList[j].count
+    totalMoney += money
+  }
+
+  bonusPool.push({
+    code: firstPrize.code,
+    totalMoney,
+  })
+}
+
+const result = bonusPool.sort((a, b) => a.totalMoney - b.totalMoney)
+// 至于怎么挑，那就随心所欲了
+console.log(result[0].code, result[0].totalMoney)
+
+console.timeEnd('start')
+
+
