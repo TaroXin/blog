@@ -1,0 +1,94 @@
+<input class="input" placeholder="请输入你的 freestyle">
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7ec699;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .input {
+    background: #fff;
+    width: 500px;
+    height: 50px;
+    line-height: 50px;
+    outline: none;
+    border: 5px solid #81d59f;
+    text-align: center;
+    border-radius: 25px;
+    font-size: 16px;
+  }
+
+  @keyframes jumping {
+    25% {
+      transform: translateY(-10px);
+    }
+    75% {
+      transform: translateY(10px);
+    }
+  }
+</style>
+
+<script>
+  /**
+   * @param {HTMLInputElement} inputEl
+   */
+  function replaceInput(inputEl) {
+    const newDivEl = document.createElement('div')
+    const inputStyles = window.getComputedStyle(inputEl)
+    for (let styleProp of inputStyles) {
+      newDivEl.style[styleProp] = inputStyles.getPropertyValue(styleProp);
+    }
+    // 不要忘记 div 和盒模型设置
+    newDivEl.style.boxSizing = 'border-box'
+
+    // 由于 input 设置了 `line-height` 和 `broder`，所以我们需要垂直居中，采用 FlexBox 的方式来解决
+    // 同时 input 也设置了 `text-align`，所以我们需要将其转换为 `justify-content`
+    newDivEl.style.display = 'inline-flex'
+    newDivEl.style.alignItems = 'center'
+    if (newDivEl.style.textAlign === 'center') {
+      newDivEl.style.justifyContent = 'center'
+    } else if (newDivEl.style.textAlign === 'right') {
+      newDivEl.style.justifyContent = 'flex-end'
+    }
+
+
+    // 将其插入到input之后
+    inputEl.insertAdjacentElement('afterend', newDivEl)
+    // 隐藏原有的 input
+    inputEl.style.display = 'none'
+
+    return newDivEl
+  }
+
+  function appendJumpingLetters(value, parentNode) {
+    for (let i = 0; i < value.length; i++) {
+      const spanEl = document.createElement('span')
+      spanEl.innerText = value[i]
+      // 动画，给每一个动画加上延迟
+      const delay = -i * 0.3
+      spanEl.style.animation = 'jumping 0.8s linear infinite ' + delay + 's'
+      parentNode.appendChild(spanEl)
+    }
+  }
+
+  const inputEl = document.querySelector('.input')
+  inputEl.addEventListener('blur', (e) => {
+    if (e.target.value) {
+      const newDivEl = replaceInput(inputEl)
+      // newDivEl.innerHTML = e.target.value
+      appendJumpingLetters(e.target.value, newDivEl)
+
+      newDivEl.addEventListener('click', () => {
+        inputEl.style.display = 'inline-block'
+        inputEl.focus()
+        newDivEl.parentNode.removeChild(newDivEl)
+      })
+    }
+  })
+</script>
+
+

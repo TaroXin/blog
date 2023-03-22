@@ -1,0 +1,79 @@
+<header>
+  v-rap
+</header>
+
+<div contenteditable id="input" class="input"></div>
+
+<input class="input">
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7ec699;
+    flex-direction: column;
+    gap: 30px;
+    height: 100vh;
+  }
+
+  header {
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 50px;
+  }
+
+  .input {
+    background: #fff;
+    width: 500px;
+    height: 50px;
+    outline: none;
+    border: none;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 25px;
+    font-size: 16px;
+  }
+
+  .jumping-letter {
+    display: inline-block;
+    animation: jumping 0.5s ease-in-out infinite 0.5s;
+  }
+
+  @keyframes jumping {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  const el = document.getElementById('input')
+
+  let str = ''
+  el.addEventListener('blur', e=> {
+    // el.innerHTML = ''
+    // if (e.data) {
+    //   str += e.data
+    // } else {
+    //   console.log('删除')
+    //   str = str.slice(0, str.length - 1)
+    // }
+    //
+    // const children = []
+    // for (let i = 0; i < str.length; i++) {
+    //   const span = document.createElement('span')
+    //   span.textContent = str[i]
+    //   span.classList.add('jumping-letter')
+    //   children.push(span)
+    //   el.appendChild(span)
+    // }
+  })
+</script>

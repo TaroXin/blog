@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copy Input Styles</title>
+  <style>
+    input {
+      width: 200px;
+      height: 40px;
+      padding: 10px;
+      background-color: red;
+      border: 1px solid #ccc;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+<input id="myInput" type="text" placeholder="This is the input">
+<script>
+  // 获取 input 元素和其样式
+  const inputElement = document.getElementById('myInput');
+  const inputStyles = window.getComputedStyle(inputElement);
+
+  // 创建一个新的 div 元素
+  const newDivElement = document.createElement('div');
+
+  // 将 input 的样式应用到新的 div 上
+  for (let styleProperty of inputStyles) {
+    newDivElement.style[styleProperty] = inputStyles.getPropertyValue(styleProperty);
+  }
+
+  // 为新的 div 添加额外的样式，使其看起来像 input
+  newDivElement.style.display = 'inline-block';
+  newDivElement.style.boxSizing = 'border-box';
+  newDivElement.innerHTML = inputElement.placeholder;
+
+  // 将新的 div 插入到 DOM 中，并隐藏 input 元素
+  inputElement.insertAdjacentElement('afterend', newDivElement);
+  inputElement.style.display = 'none';
+</script>
+</body>
+</html>
