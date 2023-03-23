@@ -1,10 +1,4 @@
-<header>
-  v-rap
-</header>
-
-<div contenteditable id="input" class="input"></div>
-
-<input class="input">
+<div contenteditable class="input"></div>
 
 <style>
   body {
@@ -13,67 +7,59 @@
     align-items: center;
     background: #7ec699;
     flex-direction: column;
-    gap: 30px;
     height: 100vh;
   }
 
-  header {
-    font-size: 60px;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 50px;
-  }
-
   .input {
+    --border-width: 5px;
+
     background: #fff;
     width: 500px;
     height: 50px;
     outline: none;
-    border: none;
-    text-align: center;
-    line-height: 50px;
+    border: var(--border-width) solid #81d59f;
     border-radius: 25px;
     font-size: 16px;
-  }
-
-  .jumping-letter {
-    display: inline-block;
-    animation: jumping 0.5s ease-in-out infinite 0.5s;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: calc(50px - var(--border-width) * 2);
   }
 
   @keyframes jumping {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
+    25% {
       transform: translateY(-10px);
     }
-    100% {
-      transform: translateY(0);
+    75% {
+      transform: translateY(10px);
     }
   }
 </style>
 
 <script>
-  const el = document.getElementById('input')
+  function appendJumpingLetters(value, parentNode) {
+    for (let i = 0; i < value.length; i++) {
+      const spanEl = document.createElement('span')
+      spanEl.innerText = value[i]
+      // 动画，给每一个动画加上延迟
+      const delay = -i * 0.3
+      spanEl.style.display='inline-block'
+      spanEl.style.animation = 'jumping 0.8s linear infinite ' + delay + 's'
+      parentNode.appendChild(spanEl)
+    }
+  }
 
-  let str = ''
-  el.addEventListener('blur', e=> {
-    // el.innerHTML = ''
-    // if (e.data) {
-    //   str += e.data
-    // } else {
-    //   console.log('删除')
-    //   str = str.slice(0, str.length - 1)
-    // }
-    //
-    // const children = []
-    // for (let i = 0; i < str.length; i++) {
-    //   const span = document.createElement('span')
-    //   span.textContent = str[i]
-    //   span.classList.add('jumping-letter')
-    //   children.push(span)
-    //   el.appendChild(span)
-    // }
+  const inputEl = document.querySelector('.input')
+  inputEl.addEventListener('blur', (e) => {
+    const text = inputEl.innerText.trim()
+    inputEl.innerHTML = ''
+    if (text) {
+      setTimeout(() => appendJumpingLetters(text, inputEl))
+    }
+  })
+
+  inputEl.addEventListener('focus', (e) => {
+    inputEl.innerHTML = inputEl.innerText.trim()
   })
 </script>
+
+

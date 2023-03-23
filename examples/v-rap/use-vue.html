@@ -1,0 +1,153 @@
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7ec699;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .input {
+    --border-width: 5px;
+
+    background: #fff;
+    width: 500px;
+    height: 50px;
+    outline: none;
+    border: var(--border-width) solid #81d59f;
+    border-radius: 25px;
+    font-size: 16px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: calc(50px - var(--border-width) * 2);
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  #app header {
+    font-size: 50px;
+    margin-bottom: 30px;
+    color: white;
+    font-weight: bold;
+  }
+
+  @keyframes jumping {
+    25% {
+      transform: translateY(-10px);
+    }
+    75% {
+      transform: translateY(10px);
+    }
+  }
+</style>
+
+<div id="app">
+  <header>v-rap</header>
+
+  <input class="input" v-rap>
+  <div contenteditable class="input" v-rap></div>
+</div>
+
+<script type="importmap">
+  {
+    "imports": {
+      "vue": "https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.esm-browser.min.js"
+    }
+  }
+</script>
+<script type="module">
+  import { createApp } from 'vue'
+  const app = createApp({})
+
+  function replaceInput(inputEl) {
+    const newDivEl = document.createElement('div')
+    const inputStyles = window.getComputedStyle(inputEl)
+    for (let styleProp of inputStyles) {
+      newDivEl.style[styleProp] = inputStyles.getPropertyValue(styleProp);
+    }
+    // 不要忘记 div 和盒模型设置
+    newDivEl.style.boxSizing = 'border-box'
+
+    // 由于 input 设置了 `line-height` 和 `broder`，所以我们需要垂直居中，采用 FlexBox 的方式来解决
+    // 同时 input 也设置了 `text-align`，所以我们需要将其转换为 `justify-content`
+    newDivEl.style.display = 'inline-flex'
+    newDivEl.style.alignItems = 'center'
+    if (newDivEl.style.textAlign === 'center') {
+      newDivEl.style.justifyContent = 'center'
+    } else if (newDivEl.style.textAlign === 'right') {
+      newDivEl.style.justifyContent = 'flex-end'
+    }
+
+
+    // 将其插入到input之后
+    inputEl.insertAdjacentElement('afterend', newDivEl)
+    // 隐藏原有的 input
+    inputEl.style.display = 'none'
+
+    return newDivEl
+  }
+
+  function appendJumpingLetters(value, parentNode) {
+    for (let i = 0; i < value.length; i++) {
+      const spanEl = document.createElement('span')
+      spanEl.innerText = value[i]
+      spanEl.style.display = 'inline-block'
+      // 动画，给每一个动画加上延迟
+      const delay = -i * 0.3
+      spanEl.style.animation = 'jumping 0.8s linear infinite ' + delay + 's'
+      parentNode.appendChild(spanEl)
+    }
+  }
+
+  function withElType(el) {
+    const type = el.tagName
+    switch (type) {
+      case 'DIV':
+        const text = el.innerText.trim()
+        el.innerHTML = ''
+        if (text) {
+          setTimeout(() => appendJumpingLetters(text, el))
+        }
+        break;
+      case 'INPUT':
+        console.log(el.value)
+        if (el.value) {
+          const newDivEl = replaceInput(el)
+          appendJumpingLetters(el.value, newDivEl)
+
+          newDivEl.addEventListener('click', () => {
+            el.style.display = 'inline-block'
+            el.focus()
+            newDivEl.parentNode.removeChild(newDivEl)
+          })
+        }
+        break;
+    }
+  }
+
+  const vRap = {
+    mounted(el) {
+      el.addEventListener('blur', () => {
+        withElType(el)
+      })
+
+      if (el.tagName === 'DIV') {
+        el.addEventListener('focus', () => {
+          el.innerHTML = el.innerText.trim()
+        })
+      }
+    }
+  }
+  app.directive('rap', vRap)
+  app.mount('#app')
+</script>
+
+
+
