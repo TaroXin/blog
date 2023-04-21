@@ -1,0 +1,22 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+<button onclick="openDir()">
+  选择文件夹
+</button>
+
+<script>
+async function openDir() {
+  const dirHandle = await window.showDirectoryPicker()
+
+  // 获取文件夹下的所有文件
+  // for await (let [name, handle] of dirHandle.entries()) {
+  //   // name: 文件名称
+  //   // handle: 文件的处理器
+  //   console.log(name, handle, handle.kind === 'file' ? '文件' : '文件夹')
+  // }
+
+  // 创建一个新文件
+  const fileHandle = await dirHandle.getFileHandle('new-file.txt')
+  fileHandle.rename('new-file2.txt')
+}
+</script>

@@ -1,0 +1,105 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+<button onclick="openFile()">
+  打开文件 showOpenFilePicker
+</button>
+
+<button onclick="openDir()">
+  打开文件夹 showDirectoryPicker
+</button>
+
+<button onclick="openFileWithInput()">
+  打开文件 input
+</button>
+
+<div>
+  <textarea id="file-content" rows="50" cols="120"></textarea>
+</div>
+
+
+<button onclick="openImage()">
+  选择图片
+</button>
+
+<script>
+const readFileContent = async (file) => {
+  const reader = new FileReader()
+  return new Promise((resolve, reject) => {
+    reader.onload = () => {
+      resolve(reader.result)
+    }
+    reader.onerror = reject
+    reader.readAsText(file)
+  })
+}
+
+const getFileWithHandle = async (handle) => {
+  const file = await handle.getFile();
+  file.handle = handle;
+  return file;
+};
+
+async function openFile() {
+  const fileHandles = await window.showOpenFilePicker({
+    types: [
+      {
+        description: 'Images',
+        accept: {
+          'image/*': ['.png'],
+        },
+      },
+    ],
+    excludeAcceptAllOption: true,
+  })
+  const files = await Promise.all(fileHandles.map(getFileWithHandle))
+  console.log(files)
+
+  const content = await readFileContent(files[0])
+  document.getElementById('file-content').innerHTML = content
+}
+
+function openDir() {
+  window.showDirectoryPicker().then((dirHandle) => {
+    console.log(dirHandle.name);
+  });
+}
+
+function openFileWithInput() {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.onchange = async (e) => {
+    console.log(e.target.files)
+
+    const content = await readFileContent(e.target.files[0])
+    document.getElementById('file-content').innerHTML = content
+  }
+  input.click()
+}
+
+async function openImage() {
+  const [fileHandle] = await window.showOpenFilePicker({
+    multiple: true,
+    types: [
+      {
+        description: 'Images',
+        accept: {
+          'image/*': ['.png'],
+        },
+      },
+    ],
+  })
+
+  const fileData = await fileHandle.getFile()
+  const reader = new FileReader()
+
+  reader.onload = () => {
+    const img = document.createElement('img')
+    img.src = reader.result
+    document.body.appendChild(img)
+  }
+  reader.readAsDataURL(fileData)
+
+  const dirHandle = await window.showDirectoryPicker()
+  await  fileHandle.moveTo(dirHandle, { name: 'newFileName.png' });
+}
+</script>
