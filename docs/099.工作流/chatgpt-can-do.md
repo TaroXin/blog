@@ -52,11 +52,11 @@ function compareJSON(originValues, updatedValues) {
 
 OK，我们时刻都在生产Bug，给测试小伙伴加绩效，不过不急，我们看看 `ChatGPT` 对这段代码的看法如何
 
-![](https://source.taroxin.com/u-image-bed/1676644844955.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676644844955.png)
 
 它写的太复杂了，我想要更简洁的版本，没事，你可以直接告诉它！！
 
-![](https://source.taroxin.com/u-image-bed/1676644955289.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676644955289.png)
 
 可以看到，我们没考虑到的点，包括对于 `null` 和 `undefined` 的判断，数组的判断它都考虑到了，甚至更惊喜的是，它懂得将我们的函数极致简化，将我们原来的 `for` 循环：
 
@@ -81,7 +81,7 @@ return Object.entries(originValues).some(([key, value]) =>
 
 如果这样你还不满足，那我们可以使用极致的做法，直接将需求描述复制给 `ChatGPT` ！
 
-![](https://source.taroxin.com/u-image-bed/1676645803478.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676645803478.png)
 
 它不仅完美的完成了任务，处理了各种边界值的情况，顺便还给出了测试用例，甚至于写上了注释！出乎意料！如果你觉得他给的代码还是过于复杂，你可以让它再执行精简，不过需要大家自己去探索了！
 
@@ -119,7 +119,7 @@ const obj = {
 
 如果遇到类似的代码，我可以称之为操作过急！让`ChatGPT`帮我们优化一下会怎么样呢！
 
-![](https://source.taroxin.com/u-image-bed/1676891119455.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676891119455.png)
 
 我对于该优化结果还是很满意的，不仅理清楚了思路，而且给了更优的实现方式。对于新语法的问题，我上面已经解释过了，所以不需要过多的担心！
 
@@ -131,7 +131,7 @@ const obj = {
 
 我们接着上面的用例继续试验，拭目以待：
 
-![](https://source.taroxin.com/u-image-bed/1676891803316.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676891803316.png)
 
 非常不错，希望大家可以用到更复杂的用例上面！
 
@@ -143,11 +143,11 @@ const obj = {
 
 > 生成 ElementUI 弹窗模板，全屏，有三个底部按钮，保存，删除，取消，内容区域是一个餐厅预定表单
 
-![](https://source.taroxin.com/u-image-bed/1676892021752.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676892021752.png)
 
 如上的代码都是可以直接使用的，也充分符合了我们的需求，甚至可以更过分一些：
 
-![](https://source.taroxin.com/u-image-bed/1676892456397.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676892456397.png)
 
 如果需要更厉害的功能，可能需要大家自己去尝试一下喽！
 
@@ -155,11 +155,11 @@ const obj = {
 
 根据Vue组件信息生成表格类文档，这里我们直接使用它刚刚生成的基于 ElementUI 的弹窗组件，来帮我们生成组件的使用文档
 
-![](https://source.taroxin.com/u-image-bed/1676893597110.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676893597110.png)
 
 上面的文档生成是有错误的，不知道大家发现了没有，需要提醒大家的是，`ChatGPT` 是一个需要调教的程序，你要反复不断地告诉他你的需求，你的想法，他才能理解你最终的意思，所以我们应该继续追问：
 
-![](https://source.taroxin.com/u-image-bed/1676893966253.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676893966253.png)
 
 #### 生成实体
 
@@ -180,13 +180,13 @@ const obj = {
 
 通过JSON数据格式生成TS实体并写注释!
 
-![](https://source.taroxin.com/u-image-bed/1676892918206.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676892918206.png)
 
 #### 生成模拟数据
 
 我们已经有了一个 Typescript 实体，让`ChatGPT`再帮我们返回一些测试数据吧！
 
-![](https://source.taroxin.com/u-image-bed/1676893159996.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676893159996.png)
 
 #### 生成测试用例
 
@@ -198,7 +198,7 @@ TDD 是一个非常良好的开发习惯，他通常要求我们先完善一部�
 
 接下来，让我们借助 `ChatGPT` 先完善测试用例：
 
-![](https://source.taroxin.com/u-image-bed/1676898494825.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676898494825.png)
 
 接下来我们就可以根据测试用例去写对应的功能实现了！
 
@@ -206,7 +206,7 @@ TDD 是一个非常良好的开发习惯，他通常要求我们先完善一部�
 
 生成SQL，也是我们的一个常见需求，只要描述好需求语句，就能得到一个比较完美的结果：
 
-![](https://source.taroxin.com/u-image-bed/1676894411346.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676894411346.png)
 
 
 ## 简化工作流程
@@ -219,25 +219,25 @@ TDD 是一个非常良好的开发习惯，他通常要求我们先完善一部�
 
 非常常见的需求，网上的文章也是一抓一大把，不做过多的赘述，我们主要看得是，`ChatGPT` 的可塑性有多强，说实话，我使用该功能的时候确实有一点惊讶，它带给我的惊喜太多了，导致我实在有点把持不住！
 
-![](https://source.taroxin.com/u-image-bed/1676899278900.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676899278900.png)
 
 ### 替换为 Prettier
 
 这个需求主要是演示 `ChatGPT` 的上下文关联，正因为有此特性，才能实现更智能的连续对话！
 
-![](https://source.taroxin.com/u-image-bed/1676899360221.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676899360221.png)
 
 ### 我要一个雪碧图
 
 那么对于我们在项目中非常常用的需求，直接问他实现方式就可以了，多么希望搜索引擎快点集成这些功能啊，`New Bing` 已经集成了这些功能，有希望成为第一个集成 `ChatGPT` 并量产化的搜索引擎，期待期待！
 
-![](https://source.taroxin.com/u-image-bed/1676899888947.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676899888947.png)
 
 ### 我要 GitHub 上的最佳示例
 
 Github 上的内容通常会比较繁杂，需要精准去定位需求是比较艰难的，它同样可以去帮我们进行筛选:
 
-![](https://source.taroxin.com/u-image-bed/1676900222756.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676900222756.png)
 
 ### 我要从网页通信到Popup
 
@@ -247,11 +247,11 @@ Github 上的内容通常会比较繁杂，需要精准去定位需求是比较�
 
 如果你直接搜索在搜索引擎搜索这类问题的话，大概会给你浏览器插件的通信原理，通信方式，并且带一些没什麽意义的示例，需要你有较强的信息分辨能力和耐心，借助 `ChatGPT` 的话可能是另外一种不同的体验：
 
-![](https://source.taroxin.com/u-image-bed/1676900796791.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676900796791.png)
 
 ### 我要点赞
 
-![](https://source.taroxin.com/u-image-bed/1676902947102.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676902947102.png)
 
 ## 给 ChatGPT 的需求描述
 
@@ -266,7 +266,7 @@ Github 上的内容通常会比较繁杂，需要精准去定位需求是比较�
 
 ## 结语 - ChatGPT版
 
-![](https://source.taroxin.com/u-image-bed/1676906161074.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676906161074.png)
 
 ## 结语
 

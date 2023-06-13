@@ -60,7 +60,7 @@ uTools 奉行的是一切皆插件的理念，在使用软件的期间，可以�
 
 顺便说一句，uTools 即开放会员权限以来遭到了很多网友的诟病，说软件没有吃像怎么样怎么样，个人觉得这种谩骂对于知识分享领域的亵渎，我愿意为任何合理有效的知识分享付费，作者用爱发电当然是一个值得称赞的行为，但是创业公司/团队也需要活下去才能提供更好的服务，何况 uTools 的软件比你的爱奇艺会员还要便宜！瑞思拜！
 
-![uTools官方PPT介绍](https://source.taroxin.com/u-image-bed/1676267825324.png)
+![uTools官方PPT介绍](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676267825324.png)
 
 ### 翻译
 
@@ -68,13 +68,13 @@ uTools 奉行的是一切皆插件的理念，在使用软件的期间，可以�
 
 简单的翻译界面如下所示：
 
-![](https://source.taroxin.com/u-image-bed/1676267899068.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676267899068.png)
 
 `易翻翻译` 支持多种的翻译引擎，有的引擎是免费的，多数翻译引擎需要自己配置参数，一次配置之后即可永久使用，还可以对比多个平台不同的翻译结果，具体的功能需要大家自己去探索了，不过大家可以看一下我平时是怎么使用的：
 
 `翻译这段文字`：翻译如下：`Translate this passage`
 
-![](https://source.taroxin.com/u-image-bed/20230213_141140.gif)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/20230213_141140.gif)
 
 ### 图床
 
@@ -84,11 +84,11 @@ uTools 奉行的是一切皆插件的理念，在使用软件的期间，可以�
 
 这里推荐的插件是，`图床`插件，其可以支持很多图床设置，令人不爽的是，UI界面并没有很好看，不过胜在功能齐全！
 
-![](https://source.taroxin.com/u-image-bed/1676269637134.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676269637134.png)
 
 本文中使用的所有图片都是通过该插件上传至我的七牛云中，并获取链接的，看看我是怎么做的：
 
-![](https://source.taroxin.com/u-image-bed/20230213_143103.gif)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/20230213_143103.gif)
 
 ### 随机数据
 
@@ -106,7 +106,7 @@ http://cdn.u2.huluxia.com/g3/M03/32/99/wKgBOVwN-96AIUhQAAHRPKn02Ys09.jpeg
 d98d90be-2422-47b0-9efe-2c2d66396881
 1676271111883
 
-![](https://source.taroxin.com/u-image-bed/20230213_145113.gif)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/20230213_145113.gif)
 
 ### 二维码生成
 
@@ -114,7 +114,7 @@ d98d90be-2422-47b0-9efe-2c2d66396881
 
 将网址 `https://github.com/taroxin` 转换为二维码，演示的效果为生成二维码和从二维码中解析出文本
 
-![](https://source.taroxin.com/u-image-bed/20230213_150240.gif)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/20230213_150240.gif)
 
 ### 图片处理
 
@@ -123,18 +123,18 @@ d98d90be-2422-47b0-9efe-2c2d66396881
 - 第一个是`图片压缩`，含有较为简介的压缩方案，可以一步到位
 - 第二个是`图片批量处理Mac版`, 含有极为丰富的图片处理方案
 
-![](https://source.taroxin.com/u-image-bed/1676272447014.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676272447014.png)
 
 两个插件皆可以进行批量操作，以下演示为我平时使用的效果：
 
-![](https://source.taroxin.com/u-image-bed/1676272930293-20230213_151902.gif)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676272930293-20230213_151902.gif)
 
 
 ### 快速搜索 emoji
 
 这里推荐的插件为 `emoji搜索Pro`，可以帮助我们快速找到需要的表情包！另外还有一个 `斗图` 插件可以用来斗图 😂
 
-![](https://source.taroxin.com/u-image-bed/1676273192614.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676273192614.png)
 
 
 ### 收集备忘
@@ -147,52 +147,52 @@ d98d90be-2422-47b0-9efe-2c2d66396881
 
 所以我使用的是 `备忘快贴` 插件，可以通过标签来管理我们常使用到的代码片段，图片，文案等信息，可以在任何地方都快速唤起，复制或者分享给他人。
 
-![](https://source.taroxin.com/u-image-bed/1676273566561.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676273566561.png)
 
 ### 正则表达式
 
 在写代码的过程中，我们也经常使用一些正则表达式，想要记住这么多正则是比较困难的，庆幸的是，我们有很多的辅助工具可以用来做到，我这里推荐的是 `Any Rule` 插件，他提供了数十个常用的正则，在开发过程中一键唤起，搜索即可
 
-![](https://source.taroxin.com/u-image-bed/1676274960179.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676274960179.png)
 
 我们可以利用`正则编辑器`插件对正则进行简单有效的编辑或解释。
 
-![](https://source.taroxin.com/u-image-bed/1676275138185.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676275138185.png)
 
 ### 剪切板
 
 这是我**使用频率最高**的一个插件，在复制很多内容时，记录剪切板数据很有效，我使用的官方提供的`剪贴板`插件，这个插件是一个会员插件，当然，社区的力量是强大的，还有`超级剪贴板`这个免费且强大的插件！
 
-![](https://source.taroxin.com/u-image-bed/1676275348230.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676275348230.png)
 
 在插件市场中搜索剪贴板，就可以找到 `超级剪贴板`
 
-![](https://source.taroxin.com/u-image-bed/1676275408793.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676275408793.png)
 
 ### 密码管理器
 
 密码管理器五花八门，管理的密码也五花八门，可以自行在插件市场搜索 `密码` 即可，根据自己的喜好选择一个，我使用的是官方的 `密码管理器` 插件
 
-![](https://source.taroxin.com/u-image-bed/1676275551088.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676275551088.png)
 
 ### 全局搜索
 
 Mac 和 Windows 的系统搜索一言难尽，所以诞生了如 `Everything` 这样强大的搜索软件，我们也可以基于这些搜索软件去开发出更便捷的社区版本，这里我使用的是 `Mverything` 插件，他具有很快的搜索速度，我觉得更好的地方是，我不需要下载一个单独的软件来实现功能！
 
-![](https://source.taroxin.com/u-image-bed/1676275759337.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676275759337.png)
 
 我平时的使用如下：
 
-![](https://source.taroxin.com/u-image-bed/20230213_161057.gif)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/20230213_161057.gif)
 
 
 ### 局域网分享
 
 强推的一个插件，平时在两台电脑上分享文件都要两个通讯软件互传，不仅速度慢，而且非常的不方便，使用该插件，完全可以替代局域网文件互传，而且速度极快！重点是，**被分享方可以不安装 uTools**，瑞思拜！
 
-![](https://source.taroxin.com/u-image-bed/1676276255526.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676276255526.png)
 
-![](https://source.taroxin.com/u-image-bed/1676276284242.png)
+![](https://taro-sources-1253403255.cos.ap-guangzhou.myqcloud.com/2023-6/1676276284242.png)
 
 ## 结语
 
